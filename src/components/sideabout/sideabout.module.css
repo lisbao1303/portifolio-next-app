@@ -1,0 +1,47 @@
+/* Estilo da sidebar desafixada */
+.styleSidebar {
+  width: 30%;
+  height: 100vh; /* Altura ajustável */
+  background: linear-gradient(45deg, #79b6c9, #63adc4);
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  transition: 'top 0.3s ease';
+
+  border-radius: 0 20px 20px 0 ; /* Ordem: superior-esquerdo, superior-direito, inferior-direito, inferior-esquerdo */
+
+}
+
+/* Contêiner para centralizar a imagem */
+.image_container {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  width: 100%;            /* Largura total do contêiner */
+}
+
+/* Estilo da imagem circular */
+.circular_img {
+  width: 200px;           /* Defina o tamanho da imagem */
+  height: 200px;          /* Certifique-se de que a altura é igual à largura */
+  border-radius: 50%;     /* Faz com que a imagem fique circular */
+  object-fit: cover;      /* Garante que a imagem se ajuste dentro da área */
+  border: 5px solid #ddd; /* Adiciona uma borda opcional */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra opcional */
+  margin: 40px auto;
+}
+
+@media (max-width: 1000px) {
+  
+  /* Estilo da sidebar desafixada */
+  .styleSidebar {
+    position: relative !important;
+    top: 0 !important;
+    width: 100%;
+    border-radius: 0;
+    height: fit-content;
+    padding: 20px 0 40px 0;
+  }
+}

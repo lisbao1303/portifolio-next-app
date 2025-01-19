@@ -7,11 +7,11 @@ export interface UserPublicData {
     birthPlace: string;
     email: string;
     phone: string;
-    adress: string;
+    address: string;
     github: string;
     linkedin: string;
-    pricipalTech: string;
+    principalTech: string;
     skills: string[];
-    adicionalInfo: string;
+    additionalInfo: string;
   }
   

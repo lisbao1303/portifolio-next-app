@@ -4,10 +4,17 @@ export interface Education {
     institute: string;
     type: string;
     description: string;
-    tecnologias: string[];
+    technologies: string[];
     dateStart: string; // ISO Date
     dateEnd: string; // ISO Date
-    academic: string[];
-    adicionalInfo: string;
+    academic: AcademicAds[];
+    additionalInfo: string;
   }
   
+  interface AcademicAds {
+    title: string;
+    type: string;
+    description: string;
+    dataInicio: string; 
+    dataFim: string;    
+}

@@ -1,0 +1,121 @@
+/* Contêiner principal */
+.timeline_container {
+    display: flex;
+    gap: 50px; 
+    align-items: stretch;
+    padding: 20px;
+    width: 100%;
+    margin: 20px; /* Centralizar horizontalmente */
+    height: auto; /* Defina uma altura fixa */
+  }
+  
+  /* Linha do tempo */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 7px; /* Largura da linha do tempo */
+    background-color: #461f24; /* Cor da linha do tempo */
+    border-radius: 10px;
+    margin-left: 20px;
+    height: auto; /* Altura da linha do tempo */
+    justify-content: space-between;
+  }
+  
+  .timeline_event {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    background-color: #461f24; /* Cor dos eventos */
+    margin-left: -4px;
+    border-radius: 50%; /* Deixa os eventos circulares */
+    z-index: 1;
+  }
+  
+  /* Card */
+  .card {
+    background-color: #ffffff; /* Fundo do card */
+    border-radius: 15px; /* Cantos arredondados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+    padding: 20px; /* Espaçamento interno */
+    width: 100%;
+  }
+  
+  .card_title {
+    font-size: 20px; /* Tamanho do título */
+    font-weight: bold; /* Negrito */
+    margin-bottom: 10px; /* Espaçamento abaixo do título */
+    color: #333; /* Cor do texto do título */
+  }
+  
+  .card_content {
+    font-size: 16px; /* Tamanho do conteúdo */
+    color: #666; /* Cor do texto */
+  }
+  
+  .pmargin{
+    margin-top: -30px;
+    margin-left: -20px;
+  }
+  .pmarginbottom{
+    margin-left: -20px;
+    margin-top: 30px;
+  }
+  .divMiniCard{
+    display: flex;
+    margin-top: 10px;
+    flex-wrap: wrap; /* Permite quebrar para a linha seguinte */
+  }
+  .miniCard{
+    background-color: #ecca96; /* Fundo do card */
+    border-radius: 5px; /* Cantos arredondados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+    padding: 7px; /* Espaçamento interno */
+    margin: 3.5px;
+    width: fit-content;
+  }
+  .company{
+    margin-bottom: 10px;
+  }
+
+
+  .subTimeline_container {
+    display: flex;
+    gap: 10px; 
+    align-items: stretch;
+    padding: 20px;
+    width: 100%;
+    margin: 20px 0 0 0; /* Centralizar horizontalmente */
+    height: auto; /* Defina uma altura fixa */
+  }
+  
+  /* Linha do tempo */
+  .subTimeline {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 7px; /* Largura da linha do tempo */
+    background-color: #888585; /* Cor da linha do tempo */
+    border-radius: 10px;
+    height: auto; /* Altura da linha do tempo */
+    justify-content: space-between;
+  }
+
+  .subCard_title{
+    font-size: 18px; /* Tamanho do título */
+    font-weight: bold; /* Negrito */
+    margin-bottom: 10px; /* Espaçamento abaixo do título */
+    color: #333; /* Cor do texto do título */
+  }
+
+  .subCard{
+    margin: 10px 0;
+  }
+  .subPmargin{
+    margin-top: -25px;
+    margin-left: -20px;
+  }
+  .subPmarginbottom{
+    margin-left: -20px;
+    margin-bottom: -30px;
+  }

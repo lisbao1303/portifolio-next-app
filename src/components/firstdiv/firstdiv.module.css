@@ -1,0 +1,104 @@
+.fullscreen {
+  /* display: flex;
+    align-items: center;
+    justify-content: center; */
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  position: relative; /* Garante que o SVG ocupe a área corretamente */
+
+  justify-content: center;
+  /* Centraliza a imagem horizontalmente */
+  align-items: center;
+  /* Centraliza a imagem verticalmente (se necessário) */
+  overflow: hidden;
+  object-fit: cover; /* Faz o SVG cobrir toda a área da div */
+}
+
+/* Estilos gerais para o SVG */
+.svgStyle {
+  top: 0;
+  position: absolute;
+  width: 1897.75px;  /* Mantém a largura original do SVG */
+  height: 1136.66px; /* Mantém a altura original do SVG */
+  transition: all 0.1s ease;
+
+}
+
+.svgStyle .hoverEffect {
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.svgStyle g:hover{
+  filter: none !important;
+  opacity: 1;
+}
+
+.sideH1 {
+  position: absolute;
+  left: 15vw;
+  top: 60%;
+  font-size: xx-large;
+}
+
+.maxImg {
+  max-width: 300%;
+  /* Faz com que a imagem nunca ultrapasse o tamanho do contêiner */
+  max-height: 30vw;
+  /* Define um tamanho máximo de altura */
+  width: auto;
+  /* Ajusta a largura proporcionalmente */
+  height: auto;
+  /* Mantém a proporção da imagem */
+  right: 20vw;
+  top: 5vw;
+  position: absolute;
+  transform: translateY(-200%);
+  /* Começa abaixo da tela */
+  animation: moveAnimation 1s forwards;
+  animation-delay: 3s;
+  /* Tempo de espera antes de começar a animação */
+}
+
+.wordsize {
+  font-size: 50px;
+}
+
+@keyframes moveAnimation {
+  0% {
+    transform: translateY(-400%);
+    /* Começa abaixo da tela */
+  }
+
+  93% {
+    transform: translateY(5%);
+    /* Move para baixo */
+  }
+
+  100% {
+    transform: translateY(0);
+    /* Termina abaixo da tela novamente */
+  }
+}
+
+
+@media (max-width: 700px) {
+  .sideH1 {
+    left: 0vw;
+    padding-left: 20px;
+
+  }
+}
+
+@media (max-width: 1000px) {
+  .maxImg {
+    max-width: 200%;
+    /* Faz com que a imagem nunca ultrapasse o tamanho do contêiner */
+    max-height: 300px;
+    /* Define um tamanho máximo de altura */
+    right: auto;
+    top: 10vh;
+  }
+}

@@ -1,11 +1,26 @@
+@font-face {
+  font-family: 'CustomFont';
+  src: url('./../../public/fonts/Avigea.woff2') format('woff2'),
+       url('./../../public/fonts/Avigea.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FontTitle';
+  src: url('./../../public/fonts/Titania-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #ecebbd;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #ecebbd;
     --foreground: #ededed;
   }
 }
@@ -16,10 +31,17 @@ body {
   overflow-x: hidden;
 }
 
+.destak{
+  color: #eca753;
+  font-family: 'FontTitle', sans-serif;
+  text-shadow: 2px 2px 0px #461f24; /* Sombra */
+  -webkit-text-stroke: 1px #461f24; /* Contorno preto */
+}
+
 body {
-  color: var(--foreground);
+  color: #461f24;
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'CustomFont', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

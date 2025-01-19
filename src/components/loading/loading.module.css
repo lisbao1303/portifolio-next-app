@@ -1,0 +1,41 @@
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Cinza transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+    /* Garante que fique acima de outros elementos */
+}
+
+/* Logo central */
+.sized {
+    width: 250px;
+    /* Tamanho do logo, ajuste conforme necessário */
+    margin-bottom: 20px;
+    animation: float 2s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+@media (max-width: 750px) {
+    .sized {
+        width: 150px;
+        /* Tamanho do logo, ajuste conforme necessário */
+        margin-bottom: 20px;
+        /* Espaço entre o logo e o spinner */
+    }
+}

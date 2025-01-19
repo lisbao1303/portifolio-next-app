@@ -1,0 +1,43 @@
+.projectsDiv {
+    width: 100%;
+    /* background-color: aliceblue; */
+    border-top: 15px solid #79b6c9;
+    /* Borda preta no topo */
+    border-bottom: 15px solid #79b6c9;
+    /* Borda preta na parte inferior */
+    background-color: rgba(0, 0, 0, 0.3);
+    /* Cinza transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: x-large;
+    padding: 20px 0 40px 0;
+    margin-bottom: 20px;
+
+}
+
+.wordsize{
+    font-size: 40px;
+    margin: 0px 0 50px 0;
+  }
+  .wordsizeP{
+    font-size: 40px;
+  }
+
+/* Logo central */
+.sized {
+    width: 150px;
+    /* Tamanho do logo, ajuste conforme necessário */
+    margin-bottom: 20px;
+    animation: float 2s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }

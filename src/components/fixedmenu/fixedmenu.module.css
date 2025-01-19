@@ -1,0 +1,50 @@
+
+.fixedRolePai{
+    width: 90px;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    /* Habilita o flexbox */
+    flex-direction: column;
+    /* Organiza os itens verticalmente */
+    justify-content: center;
+    /* Centraliza verticalmente */
+    z-index: 999;
+    align-items: center;
+    /* Centraliza horizontalmente */
+    top: 0;
+    left: 0;
+}
+.fixedRole {
+    padding: 15px;
+
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    /* Altura ajustável */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    /* Centralização dos elementos */
+    display: flex;
+    /* Habilita o flexbox */
+    flex-direction: column;
+    /* Organiza os itens verticalmente */
+    justify-content: center;
+    /* Centraliza verticalmente */
+    align-items: center;
+    /* Centraliza horizontalmente */
+}
+.aLink{
+    text-decoration: none;
+    color: #851d86;
+    margin: 10px 0;
+    transition: transform 0.3s ease; /* Transição suave */
+}
+.aLink:hover {
+    transform: scale(1.2); /* Aumenta no hover */
+  }
+
+@media (max-width: 750px) {
+    .fixedRole {
+        display: none;
+    }
+}

@@ -1,0 +1,29 @@
+
+.move_up {
+  position: absolute;  /* Posiciona a imagem em relação à tela ou contêiner pai */
+  top: 50%;  /* Define a posição central vertical */
+  transform: translateY(-50%); /* Ajusta a imagem para que seu centro vertical fique no meio da tela */
+  animation: moveAnimation 3s forwards; 
+  z-index: 1000;
+}
+
+@keyframes moveAnimation {
+  0% {
+    transform: translateY(200%);  /* Começa abaixo da tela */
+  }
+  10% {
+    transform: translateY(-52%);  /* Move um pouco para cima */
+  }
+  13% {
+    transform: translateY(-50%);  /* Posiciona no meio da tela */
+  }
+  90% {
+    transform: translateY(-50%);  /* Fica no meio */
+  }
+  93% {
+    transform: translateY(-48%);  /* Move para baixo */
+  }
+  100% {
+    transform: translateY(-200%);  /* Termina abaixo da tela novamente */
+  }
+}

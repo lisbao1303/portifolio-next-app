@@ -1,0 +1,45 @@
+.fullscreen {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: auto;
+  width: 70%;
+  margin-left: 30%;
+  margin-bottom: 40px;
+}
+
+.card {
+  background-color: #e0bb91; /* Fundo do card */
+  border-radius: 15px; /* Cantos arredondados */
+  box-shadow: 0 4px 6px rgba(7, 6, 6, 0.1); /* Sombra */
+  padding: 20px; 
+  width: calc(100%-40px); /* Largura do card */
+  margin: 20px; /* Centralizar horizontalmente */
+}
+
+.card-title {
+  font-size: 20px; /* Tamanho do título */
+  font-weight: bold; /* Negrito */
+  margin-bottom: 10px; /* Espaçamento abaixo do título */
+  color: #333; /* Cor do texto do título */
+  text-align: center; /* Centralizar texto */
+}
+
+.card-content {
+  font-size: 16px; /* Tamanho do conteúdo */
+  color: #666; /* Cor do texto */
+  text-align: center; /* Centralizar texto */
+}
+.wordsize{
+  font-size: 40px;
+}
+
+
+
+@media (max-width: 1000px) {
+  .fullscreen {
+    width: 100%;
+    margin-left: 0;
+  }
+}

@@ -9,6 +9,7 @@ import Footer from "@/components/footer/footer";
 import Loading from "@/components/loading/loading";
 import Carrosel from "@/components/carrosel/carrosel";
 import Projects from "@/components/projects/projects";
+import styles from "./page.module.css";
 
 export default function Home() {
 
@@ -17,12 +18,14 @@ export default function Home() {
     <div>
       {/* <Loading/> */}
       <Welcome />
-      <FixedMenu/>
-      <FirstDiv/>
-      {/* <Carrosel/> */}
-      <Projects/>
-      <About />
-      <Footer/>
+      <FixedMenu />
+      <FirstDiv />
+      <div className={styles.zIndex}>
+        {/* <Carrosel/> */}
+        <Projects />
+        <About />
+        <Footer />
+      </div>
     </div>
 
   );

@@ -1,29 +1,50 @@
 .fullscreen {
-  /* display: flex;
-    align-items: center;
-    justify-content: center; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
   width: 100%;
   display: flex;
-  position: relative; /* Garante que o SVG ocupe a área corretamente */
-
+  position: relative;
+  /* Garante que o SVG ocupe a área corretamente */
   justify-content: center;
   /* Centraliza a imagem horizontalmente */
   align-items: center;
   /* Centraliza a imagem verticalmente (se necessário) */
   overflow: hidden;
-  object-fit: cover; /* Faz o SVG cobrir toda a área da div */
 }
 
 /* Estilos gerais para o SVG */
 .svgStyle {
   top: 0;
-  position: absolute;
-  width: 1897.75px;  /* Mantém a largura original do SVG */
-  height: 1136.66px; /* Mantém a altura original do SVG */
-  transition: all 0.1s ease;
-
+  position: fixed;
+  width: 1897.75px;
+  /* Mantém a largura original do SVG */
+  height: 1136.66px;
+  /* Mantém a altura original do SVG */
+  -webkit-transition: parallax 3s ease-out;
+  -moz-transition: parallax 3s ease-out;
+  -o-transition: parallax 3s ease-out;
+  transition: parallax 3s ease-out;
+  
+  transform: translateY(0);
+  animation: parallax 20s linear infinite;
+  /* animation: parallax 20s cubic-bezier(0.4, 0, 0.2, 1) infinite; */
+  will-change: transform;
 }
+
+@keyframes parallax {
+  0% {
+    transform: translateY(0);
+    /* Posição inicial */
+  }
+
+  100% {
+    transform: translateY(-1136.66px);
+    /* Move o fundo para cima */
+  }
+}
+
 
 .svgStyle .hoverEffect {
   filter: grayscale(100%);
@@ -31,10 +52,10 @@
   transition: all 0.3s ease;
 }
 
-.svgStyle g:hover{
+/* .svgStyle g:hover {
   filter: none !important;
   opacity: 1;
-}
+} */
 
 .sideH1 {
   position: absolute;

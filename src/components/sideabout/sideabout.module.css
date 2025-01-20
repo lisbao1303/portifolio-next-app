@@ -8,9 +8,11 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza horizontalmente */
-  transition: 'top 0.3s ease';
-
+  align-items: center;
+  /* transition: 'top 0.3s ease'; */
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0; /* Posição inicial onde o sticky começa */
   border-radius: 0 20px 20px 0 ; /* Ordem: superior-esquerdo, superior-direito, inferior-direito, inferior-esquerdo */
 
 }

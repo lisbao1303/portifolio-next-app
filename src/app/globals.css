@@ -14,16 +14,16 @@
 }
 
 :root {
-  --background: #ffffff;
+  --background: #ecebbd;
   --foreground: #ecebbd;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #ecebbd;
-    --foreground: #ededed;
+    --foreground: black;
   }
-}
+} */
 
 html,
 body {
@@ -37,9 +37,14 @@ body {
   -webkit-text-stroke: 1px #461f24; /* Contorno preto */
 }
 
+html {
+  background-color: transparent; /* Isso permite que a cor de fundo do navegador seja visível */
+}
+
+
 body {
   color: #461f24;
-  background: var(--background);
+  background-color: var(--background);
   font-family: 'CustomFont', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

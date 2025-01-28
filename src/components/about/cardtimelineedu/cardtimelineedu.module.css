@@ -119,3 +119,15 @@
     margin-left: -20px;
     margin-bottom: -30px;
   }
+  
+  @media (max-width: 1000px) {
+
+    /* Estilo da sidebar desafixada */
+    .timeline_container {
+      gap: 20px;
+    }
+    .timeline {
+      margin-left: 10px;
+    }
+  
+  }

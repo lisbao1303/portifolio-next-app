@@ -29,9 +29,9 @@ const initializeUserPublicData = (): UserPublicData => ({
 
 export default async function About() {
 
-    const userPublicData: UserPublicData[] = [initializeUserPublicData()];//await userPublicDataService.getAll();
-    const experience: Experience[] = [];//await experienceService.getAll();
-    const education: Education[] = [];//await educationService.getAll();
+    const userPublicData: UserPublicData[] = await userPublicDataService.getAll();
+    const experience: Experience[] = await experienceService.getAll();
+    const education: Education[] = await educationService.getAll();
 
     return (
         <div className={styles.aboutContainer}>

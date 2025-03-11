@@ -7,7 +7,7 @@ export default function Vbatoxml() {
   const [xmlOutput, setXmlOutput] = useState("");
 
   const extractFunctionsFromVBA = (vba: string) => {
-    const functionRegex = /(Sub|Function)\s+(\w+GC[A-Za-z\d]{2})\(\)/g;
+    const functionRegex = /(Sub|Function)\s+(\w+GC[A-Za-z\d]{2})\([^)]*\)/g;
     let match;
     let functions: string[] = [];
 
@@ -24,7 +24,7 @@ export default function Vbatoxml() {
 
     // Regex para capturar o bloco da função VBA
     const functionBlockRegex = new RegExp(
-      `(Sub|Function)\\s+${functionName}\\(\\)[\\s\\S]*?End\\s+(Sub|Function)`,
+      `(Sub|Function)\\s+${functionName}\\([^)]*\\)[\\s\\S]*?End\\s+(Sub|Function)`,
       "g"
     );
 

@@ -7,13 +7,14 @@ export default function Vbatoxml() {
   const [xmlOutput, setXmlOutput] = useState("");
 
   const extractFunctionsFromVBA = (vba: string) => {
-    const functionRegex = /(Sub|Function)\s+(\w+GC\d{2})\(\)/g;
+    const functionRegex = /(Sub|Function)\s+(\w+GC[A-Za-z\d]{2})\(\)/g;
     let match;
     let functions: string[] = [];
 
     while ((match = functionRegex.exec(vba)) !== null) {
-      functions.push(match[1]);
+      functions.push(match[2]);
     }
+    console.log(functions)
 
     return functions;
   };

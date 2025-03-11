@@ -6,6 +6,7 @@ export default function Carrosel() {
   return (
     <div className={styles.carrosel}>
 
+
     </div>
 
   );

@@ -4,7 +4,7 @@ import styles from "./projects.module.css";
 export default function Projects() {
 
   return (
-    <div className={styles.projectsDiv}>
+    <div id="projects" className={styles.projectsDiv}>
                 <p className={"destak " + styles.wordsize}> Projects</p>
               <img   src="/assets/assetLoading.svg"  alt="Icon" className={styles.sized}/>
               Em breve ...

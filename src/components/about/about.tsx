@@ -34,7 +34,7 @@ export default async function About() {
     const education: Education[] = await educationService.getAll();
 
     return (
-        <div className={styles.aboutContainer}>
+        <div id="cvAbout" className={styles.aboutContainer}>
 
             <SideAbout publicData={userPublicData[0]} />
 

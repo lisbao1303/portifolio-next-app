@@ -37,13 +37,27 @@
     text-decoration: none;
     color: #851d86;
     margin: 10px 0;
-    transition: transform 0.3s ease; /* Transição suave */
+    transform: scale(1); /* Volta para 1.2 */
+    transition: transform 0.3s ease;
+
 }
 .aLink:hover {
-    transform: scale(1.2); /* Aumenta no hover */
-  }
+    animation: pulseScale 0.3s ease-in-out forwards;
+}
 
-@media (max-width: 750px) {
+@keyframes pulseScale {
+    0% {
+        transform: scale(1);
+    }
+    70% {
+        transform: scale(1.4); /* Aumenta um pouco mais */
+    }
+    100% {
+        transform: scale(1.2); /* Volta para 1.2 */
+    }
+}
+
+@media (max-width: 1000px) {
     .fixedRole {
         display: none;
     }

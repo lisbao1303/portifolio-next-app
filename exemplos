@@ -1,0 +1,280 @@
+<%
+
+    Dim aryEnviaProposta,aryStatus,aryDadosProp
+    Dim strNrProp,strTpVisao,strCdTpPessoa,strTP_VISAO
+    Dim strStatus,strCpfcnpj,strNome,strPO,strEntrada
+
+    Dim intI
+    
+    Dim strIndUtilLimite
+    Dim strIndPgtoParc
+
+    Call fgInfBasica()
+    Call fgDadosBasicosGC43()  ' descobre para onde enviar
+    Call fgDadosBasicosGC42()   
+    Call fgDadosBasicosGC47()   
+ 
+'******************************************************************************************** 
+ Sub fgInfBasica()
+
+    aryDadosProp    = fgBuscaDadosProp(strUsuarioGC,1)
+    strNrProp       = fgDadosProp(aryDadosProp,"NR_PROP")
+    strTpVisao      = fgDadosProp(aryDadosProp,"txtTpVisao")
+    strCdTpPessoa   = fgDadosProp(aryDadosProp,"cboCdTipoPessoa")
+    strStatus       = fgDadosProp(aryDadosProp,"CD_STATUS")
+    strCpfcnpj      = fgDadosProp(aryDadosProp,"cpfcnpj")
+    strTP_VISAO     = fgDadosProp(aryDadosProp,"TP_VISAO")
+    strNome         = fgDadosProp(aryDadosProp,"strNome")
+    strPO           = fgDadosProp(aryDadosProp,"txtNrPO")
+	strEntrada	    = fgDadosProp(aryDadosProp,"TIPO_ENTRADA")
+	
+ 
+
+
+End Sub
+'********************************************************************************************
+
+
+
+
+'********************************************************************************************
+Sub fgDadosBasicosGC42()
+    
+    Dim objSrv
+    Dim intCodRet,intI
+    Dim strMsgRet
+    Dim ret, ArrayMetaSalva, vz,codFaixa,codHier
+    Dim  aryXML(15,4) ' estou enviando X campos
+    Dim aryRetorno ' Espero por X campos
+    Dim aryTipoPessoa
+    Dim strRetorno
+    Dim orderBy : orderBy  =  "2" 
+
+    Call fgIncluiXML(aryXML,"Usuario","","A","5")
+    Call fgIncluiXML(aryXML,"PGMCALL","GC1C5042","A","8")
+    Call fgIncluiXML(aryXML,"FORMATO","GCS5042","A","7")
+    Call fgIncluiXML(aryXML,"TERMTRA","","A","10")
+    Call fgIncluiXML(aryXML,"TAMCOMM","","N","7")
+    Call fgIncluiXML(aryXML,"CDFUNC" ,"L","A","1")
+    Call fgIncluiXML(aryXML,"NUMPROP",strNrProp,"N","18")
+    Call fgIncluiXML(aryXML,"STATUS" ,strStatus,"N","2")
+    Call fgTamnhoComAreaXML(aryXML)
+
+    Set objSrv  = Server.CreateObject("xGC_AltaMQ.clsAltaMQ")
+    Call objSrv.fgRecuperaAltaMQ(strMQServer ,"GC42", aryXml,aryRetorno, intCodRet, strMsgRet, orderBy )
+    Set objSrv  = Nothing
+
+    If intCodRet <> 0 And  intCodRet <> 8888 Then 
+        strRetorno = "<!--erro-->" & strMsgRet 
+        response.write strRetorno
+        response.End 
+    Else 
+
+ 		aryStatus = aryRetorno
+
+
+    End If
+
+End Sub
+'********************************************************************************************
+
+
+
+
+
+
+
+'********************************************************************************************
+Sub fgDadosBasicosGC43()
+    
+    Dim objSrv
+    Dim intCodRet,intI
+    Dim strMsgRet
+    Dim ret, ArrayMetaSalva, vz,codFaixa,codHier
+    Dim  aryXML(15,4) ' estou enviando X campos
+    Dim aryRetorno ' Espero por X campos
+    Dim aryTipoPessoa
+    Dim strRetorno
+    Dim orderBy : orderBy  =  "2" 
+	Dim aryGravar(2,2)
+	Dim aryTmp(0,12)
+
+	If fgCdbl(strStatus) = 4 Or fgCdbl(strStatus) = 8 Or fgCdbl(strStatus) > 10 Then
+	
+		aryEnviaProposta = aryTmp
+
+	Else 
+
+
+		Call fgIncluiXML(aryXML,"Usuario","","A","5")
+		Call fgIncluiXML(aryXML,"PGMCALL","GC1C5043","A","8")
+		Call fgIncluiXML(aryXML,"FORMATO","GCS5043","A","7")
+		Call fgIncluiXML(aryXML,"TERMTRA","","A","10")
+		Call fgIncluiXML(aryXML,"TAMCOMM","0000000","N","7")
+		Call fgIncluiXML(aryXML,"CDFUNC" ,"C","A","1")
+		Call fgIncluiXML(aryXML,"NUMPROP",strNrProp,"N","18")
+		Call fgIncluiXML(aryXML,"CPFCNPJ",strCpfcnpj,"N","15")
+		Call fgIncluiXML(aryXML,"ORIGEM", iif(strTP_VISAO = 1 , "A", "M"),"A","1")
+		Call fgTamnhoComAreaXML(aryXML)
+
+		Set objSrv  = Server.CreateObject("xGC_AltaMQ.clsAltaMQ")
+		Call objSrv.fgRecuperaAltaMQ(strMQServer , "GC43",  aryXml, aryRetorno,  intCodRet,  strMsgRet, orderBy)
+		Set objSrv  = Nothing
+		 
+		If(intCodRet <> 0) Then 
+			strRetorno = "<!--erro-->" & strMsgRet 
+			response.write strRetorno
+			response.End 
+		Else 
+			
+			aryEnviaProposta = aryRetorno
+			
+			aryGravar (1,0) = "CD_STATUS"
+			aryGravar (1,1) = Right("0" & aryRetorno(0,1),3) ' Pendente ou Encaminhadas  
+
+
+			Call fgGravaAryDadosProp(strUsuarioGC,1, aryGravar)
+			strStatus = fgDadosProp(aryDadosProp,"CD_STATUS")
+
+		End If
+
+
+	
+	End If 
+End Sub
+'********************************************************************************************
+
+
+
+
+
+
+
+'********************************************************************************************
+
+Sub fgDadosBasicosGC47()
+    
+    Dim objSrv
+    Dim intCodRet,intI
+    Dim strMsgRet
+    Dim ret, ArrayMetaSalva, vz,codFaixa,codHier
+    Dim  aryXML(7,4) ' estou enviando X campos
+    Dim aryRetorno ' Espero por X campos
+    Dim aryTipoPessoa
+    Dim strRetorno
+    Dim orderBy : orderBy  =  "2" 
+
+    Call fgIncluiXML(aryXML,"Usuario","","A","5")
+    Call fgIncluiXML(aryXML,"PGMCALL","GC1C5047","A","8")
+    Call fgIncluiXML(aryXML,"FORMATO","GCS5047","A","7")
+    Call fgIncluiXML(aryXML,"TERMTRA","","A","10")
+    Call fgIncluiXML(aryXML,"TAMCOMM","0000000","N","7")
+    Call fgIncluiXML(aryXML,"CDFUNC" ,"C","A","1")
+    Call fgIncluiXML(aryXML,"NUMPROP" ,strNrProp,"N","18")
+    Call fgTamnhoComAreaXML(aryXML)
+
+    Set objSrv  = Server.CreateObject("xGC_AltaMQ.clsAltaMQ")
+    ret  = objSrv.fgRecuperaAltaMQ(strMQServer , _
+                                   "GC47", _
+                                   aryXml, _
+                                   aryRetorno, _
+                                   intCodRet, _
+                                   strMsgRet, _
+                                   orderBy _
+                                   )
+    Set objSrv  = Nothing
+     
+
+    If(intCodRet <> 0) Then 
+        strRetorno = "<!--erro-->" & strMsgRet 
+        response.write strRetorno
+        response.End 
+    Else 
+        aryDadosProp = aryRetorno
+    End If
+
+    'response.write("Retorno GC47 ==> " & aryRetorno)
+    'response.write("Retorno GC47 ==> " & aryDadosProp)  
+
+    strIndUtilLimite  = fgDadosProp(aryDadosProp,"INUTLIC")
+    strIndPgtoParc    = fgDadosProp(aryDadosProp,"INPGPAA")
+
+End Sub
+'********************************************************************************************
+
+
+
+
+
+
+'********************************************************************************************
+Sub fgGC55() ' Consulta Parecer
+    
+    Dim objSrv
+    Dim intCodRet,intI
+    Dim strMsgRet
+    Dim ret, ArrayMetaSalva, vz,codFaixa,codHier
+    Dim  aryXML(8,4) ' estou enviando X campos
+    Dim aryRetorno ' Espero por X campos
+    Dim aryTipoPessoa
+    Dim strRetorno
+    Dim orderBy : orderBy  =  "2" 
+
+    Call fgIncluiXML(aryXML,"Usuario","","A","5")
+    Call fgIncluiXML(aryXML,"PGMCALL","GC1C5043","A","8")
+    Call fgIncluiXML(aryXML,"FORMATO","GCS5043","A","7")
+    Call fgIncluiXML(aryXML,"TERMTRA","","A","10")
+    Call fgIncluiXML(aryXML,"TAMCOMM","0000000","N","7")
+    Call fgIncluiXML(aryXML,"CDFUNC" ,"C","A","1")
+    Call fgIncluiXML(aryXML,"NUMPROP" ,strNrProp,"N","18")
+    Call fgIncluiXML(aryXML,"ORIGEM","M","A","1")
+    Call fgTamnhoComAreaXML(aryXML)
+
+    Set objSrv  = Server.CreateObject("xGC_AltaMQ.clsAltaMQ")
+    call objSrv.fgRecuperaAltaMQ(strMQServer , _
+                                   "GC55", _
+                                   aryXml, _
+                                   aryRetorno, _
+                                   intCodRet, _
+                                   strMsgRet, _
+                                   orderBy _
+                                   )
+    Set objSrv  = Nothing
+     
+
+    If(intCodRet <> 0) Then 
+        strRetorno = "<!--erro-->" & strMsgRet 
+        response.write strRetorno
+        response.End 
+    Else 
+        aryEnviaProposta = aryRetorno
+    End If
+
+End Sub
+'********************************************************************************************
+
+
+ 
+%>
+
+
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<requestMsg>
+<dse_operationName>GC42</dse_operationName>
+<dse_formattedData>
+<kColl id="entryData">
+<field id="Usuario" value="MQGCK"/>
+<field id="PGMCALL" value="GC1C5042"/>
+<field id="FORMATO" value="GCS5042"/>
+<field id="TERMTRA" value=""/>
+<field id="TAMCOMM" value="0000000"/>	
+<field id="CDFUNC" value="L"/> 
+<field id="NUMPROP" value="000000000000000001"/> 
+<field id="STATUS" value="00"/> 
+ 
+		</kColl>
+</dse_formattedData>
+<dse_processParameters>dse_operationName</dse_processParameters>
+</requestMsg>
+

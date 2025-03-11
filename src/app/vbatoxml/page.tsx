@@ -1,59 +1,101 @@
 "use client"
 import { useState } from "react";
+import styles from "./page.module.css";
 
 export default function Vbatoxml() {
   const [vbaCode, setVbaCode] = useState("");
   const [xmlOutput, setXmlOutput] = useState("");
 
-  const extractFieldsFromVBA = (vba: string) => {
-    const fieldRegex = /Call\s+fgIncluiXML\(aryXML,\s*"(.*?)"\s*,\s*"(.*?)"/g;
+  const extractFunctionsFromVBA = (vba: string) => {
+    const functionRegex = /Sub\s+(fgDadosBasicosGC\d{2})/g;
     let match;
-    let fields = "";
+    let functions: string[] = [];
 
-    while ((match = fieldRegex.exec(vba)) !== null) {
-      const fieldName = match[1];
-      const fieldValue = match[2];
-      fields += `      <field id="${fieldName}" value="${fieldValue}"/>
-`;
+    while ((match = functionRegex.exec(vba)) !== null) {
+      functions.push(match[1]);
     }
 
-    return fields;
+    return functions;
   };
 
+
+  const extractFieldsFromVBA = (vba: string, functionName: string) => {
+
+    // Regex para capturar o bloco da função VBA
+    const functionBlockRegex = new RegExp(
+        `Sub\\s+${functionName}[\\s\\S]*?End\\s+Sub`,
+        "g"
+    );
+
+    // Regex para capturar os campos fgIncluiXML
+    const regex = /fgIncluiXML\(\s*([^,]+),\s*([^,]+?)\s*,\s*([^,]+?)\s*,\s*"([^"]*)",\s*"([^"]+)"\s*\)/g
+    
+    // Encontra o bloco da função
+    const matchFunctionBlock = functionBlockRegex.exec(vba);
+    if (!matchFunctionBlock) return "";
+
+    // Extrai o conteúdo do bloco da função
+    const functionBlock = matchFunctionBlock[0];
+
+    // Variável para armazenar os campos extraídos
+    let fields = "";
+
+    // Itera sobre todas as correspondências de fgIncluiXML
+    let match;
+    while ((match = regex.exec(functionBlock)) !== null) {
+      console.log(match)
+        const fieldName = match[2]; // Nome do campo
+        const fieldValue = match[3]; // Valor do campo
+        fields += `      <field id=${fieldName} value=${fieldValue}/>\n`;
+    }
+
+    console.log(fields)
+
+    return fields;
+};
+
   const generateXML = () => {
-    const extractedFields = extractFieldsFromVBA(vbaCode);
-    const xmlTemplate = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    const functions = extractFunctionsFromVBA(vbaCode);
+    let xmlTemplates = "";
+
+    functions.forEach((func) => {
+      const operationName = "GC" + func.slice(-2);
+      const extractedFields = extractFieldsFromVBA(vbaCode, func);
+      const xmlTemplate = `<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>
 <requestMsg>
-  <dse_operationName>GC42</dse_operationName>
+  <dse_operationName>${operationName}</dse_operationName>
   <dse_formattedData>
-    <kColl id="entryData">
+    <kColl id=\"entryData\">
 ${extractedFields}    </kColl>
   </dse_formattedData>
   <dse_processParameters>dse_operationName</dse_processParameters>
-</requestMsg>`;
-    setXmlOutput(xmlTemplate);
+</requestMsg>
+
+`;
+      xmlTemplates += xmlTemplate;
+    });
+
+    setXmlOutput(xmlTemplates);
   };
 
+
   return (
-    <div className="p-4 flex flex-col gap-4">
-      <textarea
-        className="border p-2 w-full h-40"
-        placeholder="Cole seu código VBA aqui"
-        value={vbaCode}
-        onChange={(e) => setVbaCode(e.target.value)}
-      />
-      <button
-        className="bg-blue-500 text-white px-4 py-2 rounded"
-        onClick={generateXML}
-      >
-        Gerar XML
-      </button>
-      <textarea
-        className="border p-2 w-full h-40"
-        placeholder="XML Gerado"
-        value={xmlOutput}
-        readOnly
-      />
+    <div className={styles.container}>
+      <div className={styles.textareas}>
+        <textarea
+          className={styles.textarea}
+          placeholder="Cole seu código VBA aqui"
+          value={vbaCode}
+          onChange={(e) => setVbaCode(e.target.value)}
+        />
+        <textarea
+          className={styles.textarea}
+          placeholder="XML Gerado"
+          value={xmlOutput}
+          readOnly
+        />
+      </div>
+      <button className={styles.button} onClick={generateXML}>Gerar XML</button>
     </div>
   );
 }

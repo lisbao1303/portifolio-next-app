@@ -1,0 +1,31 @@
+[
+    {
+      "id": "679904460f89c80744fe7c6a",
+      "name": "Gabriel Elisbão da Silva",
+      "title": "SOFTWARE ENGINEER",
+      "about": "<br/>🚀 About me <br/><br/>I'm Gabriel Elisbão, I have more than 4 years of experience as a Java developer working fullstack (30% frontend work with Angular or React). I graduated in Mechatronics Engineering from the Federal University of Uberlândia (UFU), a course based on Mechanical Engineering and basic knowledge of Electrical Engineering and Computer Science. Constantly specializing in backend solutions, I am proficient in Java, Spring Boot, Node.js, AWS, Kafka, Docker, Kubernetes, MySQL and MongoDB. I'm dedicated to building scalable and reliable applications that enhance technological advances.<br/><br/>🌟 Aspirations<br/><br/>My passion for technology drives me towards backend development and software architecture, particularly in mastering and contributing to the Quarkus, Spring and Node ecosystems.<br/><br/>🛠 Technical Expertise<br/><br/>My technical toolkit includes extensive experience with Java (JPA/JEE|Jakarta), Hibernate, Quarkus, Spring, pipelines (GitLab, Jenkins), Node.js, AWS, Kafka, Docker, Kubernetes, SQL(Oracle, Db2) and MongoDB. Esta especialização me permite desenvolver soluções robustas que enfrentam desafios complexos e avançam o estado das aplicações web. My work focuses on ensuring high testability, reliability, maintainability and modularization in software development.",
+      "birth": "1998-03-13",
+      "birthPlace": "Belo Horizonte /MG - Brazil",
+      "email": "elisbaogabriel@gmail.com",
+      "phone": "+5534984102434",
+      "address": "228 Moncorvo Filho St, Butantã, São Paulo, SP, Brazil, 05507-060",
+      "github": "lisbao1303",
+      "linkedin": "gabrielelisbao",
+      "principalTech": [
+        "Java",
+        "Spring",
+        "Quarkus",
+        "Angular",
+        "Jenkins"
+      ],
+      "skills": [
+        {
+          "name": "PostgreSQL",
+          "type": "DBMS",
+          "level": "5",
+          "adcLevel": ""
+        }
+      ],
+      "additionalInfo": ""
+    }
+  ]

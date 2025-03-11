@@ -1,0 +1,119 @@
+[
+    {
+      "id": "679902f70f89c80744fe7c63",
+      "company": "Homero.tech",
+      "position": "Fullstack Developer",
+      "location": "Uberlândia, MG, Brazil",
+      "description": "Fullstack development of systems, integration, deploys and tests.",
+      "technologies": [
+        "Java 11+",
+        "Quarkus",
+        "Angular Js/2+",
+        "ReactJs",
+        "GCP",
+        "MongoDb",
+        "JUnit",
+        "Jest/Cypress"
+      ],
+      "dateStart": "2023-11-10",
+      "dateEnd": "2999-03-10",
+      "additionalInfo": ""
+    },
+    {
+      "id": "679903110f89c80744fe7c64",
+      "company": "Stefanini Group",
+      "position": "System Development Analyst",
+      "location": "Brasília, Distrito Federal, Brazil",
+      "description": "Development of systems for Banco do Brazil, microservices, continuous integration and deploys, unit and integration tests.",
+      "technologies": [
+        "Java 11+",
+        "Quarkus",
+        "Angular Js/2+",
+        "SQL DB2",
+        "AWS",
+        "OpenShift",
+        "JUnit",
+        "Kafka",
+        "Jenkins",
+        "Grafana",
+        "Elasticsearch",
+        "SonarQube"
+      ],
+      "dateStart": "2022-03-10",
+      "dateEnd": "2023-11-10",
+      "additionalInfo": ""
+    },
+    {
+      "id": "6799031e0f89c80744fe7c65",
+      "company": "Kyros Tecnologia",
+      "position": "System Development Analyst",
+      "location": "Uberlândia, MG, Brazil",
+      "description": "Development of product RESTFull APIs; Full-stack development of systems, unit tests.",
+      "technologies": [
+        "Java 8 e 11",
+        "Spring MVC",
+        "Hibernate",
+        "ReactJs",
+        "JUnit",
+        "AWS",
+        "JUnit",
+        "Oracle SGBD"
+      ],
+      "dateStart": "2021-08-10",
+      "dateEnd": "2022-03-10",
+      "additionalInfo": ""
+    },
+    {
+      "id": "679903320f89c80744fe7c66",
+      "company": "Asa Consultoria",
+      "position": ".NET Developer",
+      "location": "Uberlândia, MG, Brazil",
+      "description": "Development of REST APIs; Maintenance and improvement of systems with analysis of business rules and development of appropriate solutions for a logistics company; Integration and migration of systems.",
+      "technologies": [
+        ".NET Core",
+        ".NET Framework",
+        "Java 8",
+        "Hibernate",
+        "SQLServer",
+        "VBA"
+      ],
+      "dateStart": "2021-06-10",
+      "dateEnd": "2021-08-10",
+      "additionalInfo": ""
+    },
+    {
+      "id": "679903410f89c80744fe7c67",
+      "company": "Asa Consultoria",
+      "position": "Software Developer Intern",
+      "location": "Uberlândia, MG, Brazil",
+      "description": "Development of systems; Performance in internal projects and improvement in the processes developed.",
+      "technologies": [
+        ".NET Core",
+        ".NET Framework",
+        "SQLServer",
+        "VBA"
+      ],
+      "dateStart": "2021-03-10",
+      "dateEnd": "2021-06-10",
+      "additionalInfo": ""
+    },
+    {
+      "id": "679903500f89c80744fe7c68",
+      "company": "Hortela Design e Tecnologia",
+      "position": "Web/Mobile Developer Intern",
+      "location": "Uberlândia, MG, Brazil",
+      "description": "Development of a website and mobile app for a digital banking system.",
+      "technologies": [
+        "Java",
+        "JUnit",
+        "SpringBoot",
+        "MongoDb",
+        "AngularJs",
+        "ReactJs",
+        "Ionic"
+      ],
+      "dateStart": "2020-02-10",
+      "dateEnd": "2020-12-10",
+      "additionalInfo": ""
+    }
+  ]

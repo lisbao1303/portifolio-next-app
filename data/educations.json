@@ -1,0 +1,26 @@
+[
+    {
+      "id": "6799029e0f89c80744fe7c62",
+      "title": "Mechatronics Engineering",
+      "institute": "Universidade Federal de Uberlândia",
+      "type": "Bachelor's degree",
+      "description": "Based on mechanical engineering and basic knowledge of electrical engineering and computer science.",
+      "technologies": [
+        "C++",
+        "Embedded Systems",
+        "Python"
+      ],
+      "dateStart": "2017-03-10",
+      "dateEnd": "2022-03-10",
+      "academic": [
+        {
+          "title": "Meta Consultoria",
+          "type": "Junior Enterprise",
+          "description": "Monitoring and managing the projects carried out by the company.",
+          "dataInicio": "2019-04-10",
+          "dataFim": "2020-10-10"
+        }
+      ],
+      "additionalInfo": ""
+    }
+  ]

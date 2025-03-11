@@ -29,8 +29,9 @@ export default function Vbatoxml() {
     );
 
     // Regex para capturar os campos fgIncluiXML
-    const regex = /fgIncluiXML\(\s*([^,]+),\s*([^,]+?)\s*,\s*([^,()]+(?:\([^()]*\))?)\s*,\s*"([^"]*)",\s*"([^"]+)"\s*\)/g;    
+    //const regex = /fgIncluiXML\(\s*([^,]+),\s*([^,]+?)\s*,\s*([^,()]+(?:\([^()]*\))?)\s*,\s*"([^"]*)",\s*"([^"]+)"\s*\)/g;    
     
+    const regex = /fgIncluiXML\(\s*([^,]+),\s*([^,]+?)\s*,\s*([^,()]+(?:\([^()]*(?:\([^()]*\))*[^()]*\))?)\s*,\s*"([^"]*)",\s*"([^"]+)"\s*\)/g;
     // Encontra o bloco da função
     const matchFunctionBlock = functionBlockRegex.exec(vba);
     if (!matchFunctionBlock) return "";
